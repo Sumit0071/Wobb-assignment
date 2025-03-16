@@ -1,0 +1,59 @@
+:root {
+  --primary-blue: rgb(0, 0, 255);
+  --secondary-blue: rgb(96, 96, 182);
+
+  --text-primary-light: black;
+  --text-primary-dark: white;
+
+  --text-secondary-light: rgb(70, 70, 70);
+  --text-secondary-dark: rgb(160, 160, 160);
+
+  --bg-primary-light: white;
+  --bg-primary-dark: rgb(35, 39, 48);
+
+  --bg-secondary-light: rgb(212, 212, 212);
+  --bg-secondary-dark: rgb(34, 34, 34);
+
+  --bg-navbar-light: rgb(104, 104, 255);
+  --bg-navbar-dark: rgb(35, 35, 170);
+}
+
+/* Default styles for smooth transitions */
+html {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Light Theme */
+.light-theme {
+  background-color: var(--bg-primary-light);
+  color: var(--text-primary-light);
+}
+
+/* Dark Theme */
+.dark-theme {
+  background-color: var(--bg-primary-dark);
+  color: var(--text-primary-dark);
+}
+
+/* Global Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* App Wrapper */
+.App {
+  min-height: 100vh;
+}
+
+/* Navbar Styles */
+nav {
+  background-color: var(--bg-navbar-light);
+  color: var(--text-primary-light);
+}
+
+.dark-theme nav {
+  background-color: var(--bg-navbar-dark);
+  color: var(--text-primary-dark);
+}

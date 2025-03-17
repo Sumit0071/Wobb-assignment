@@ -15,7 +15,7 @@
   --bg-secondary-dark: rgb(34, 34, 34);
 
   --bg-navbar-light: rgb(104, 104, 255);
-  --bg-navbar-dark: rgb(35, 35, 170);
+  --bg-navbar-dark: rgb(23, 26, 33);
 }
 
 /* Default styles for smooth transitions */
@@ -32,7 +32,7 @@ html {
 /* Dark Theme */
 .dark-theme {
   background-color: var(--bg-primary-dark);
-  color: var(--text-primary-dark);
+  color: var(--text-secondary-dark);
 }
 
 /* Global Reset */

@@ -24,9 +24,9 @@ const Navbar = () => {
 
                 {/* Center Section: Menu (Hidden on Mobile) */}
                 <ul className="hidden md:flex space-x-6 text-gray-700 dark:text-white font-medium">
-                    <li className="cursor-pointer hover:text-blue-500 transition font-bold">Home</li>
-                    <li className="cursor-pointer hover:text-blue-500 transition font-bold">About</li>
-                    <li className="cursor-pointer hover:text-blue-500 transition font-bold">Service</li>
+                    <li className="cursor-pointer  hover:text-blue-500 transition font-medium">Home</li>
+                    <li className="cursor-pointer  hover:text-blue-500 transition font-medium">About</li>
+                    <li className="cursor-pointer  hover:text-blue-500 transition font-medium">Service</li>
 
                 </ul>
 
@@ -53,6 +53,10 @@ const Navbar = () => {
                             </span>
                         )}
                     </div>
+                    <div className="relative group flex items-center gap-2">
+                        <img alt="avatar" src="src/assets/avatar.jpeg" className="h-[40px] w-[40px] rounded-full cursor-pointer"/>
+                Hi Sumit
+                    </div>
 
                     {/* Hamburger Menu (Mobile Only) */}
                     <button
@@ -76,9 +80,9 @@ const Navbar = () => {
                     >
                         <X size={15} color="gray" />
                     </button>
-                    <a href="/" className="text-lg font-bold hover:text-blue-500">Home</a>
-                    <a href="/" className="text-lg font-bold hover:text-blue-500">About</a>
-                    <a href='/' className="text-lg font-bold hover:text-blue-500">Service</a>
+                    <a href="/" className="text-lg font-bold  hover:text-blue-500">Home</a>
+                    <a href="/" className="text-lg font-bold  hover:text-blue-500">About</a>
+                    <a href='/' className="text-lg font-bold  hover:text-blue-500">Service</a>
                 </div>
             </div>
         </nav>

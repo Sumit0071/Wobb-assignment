@@ -78,10 +78,7 @@ function App() {
 
   return (
     <div className={`App ${theme} min-h-screen bg-gray-100 text-gray-900`}>
-      {/* Fixed Navbar */}
       <Navbar />
-
-      {/* Fixed Sort Component */}
       <div className="fixed top-16 left-0 w-full py-3 px-4 z-10">
         <SortComponent categories={categoryCounts} onCategoryChange={setFilteredCategory} />
       </div>

@@ -56,7 +56,10 @@ The app will be available at **`http://localhost:5173`**.
 ---
 
 ## **📹 Demo Video**  
-📌 [Insert YouTube/Google Drive Link]  
+
+[![Campaign Listing App - Demo](https://img.youtube.com/vi/i4y4a8tiwVY/0.jpg)](https://youtu.be/i4y4a8tiwVY)  
+
+🔗 **Watch the demo on YouTube**: [https://youtu.be/i4y4a8tiwVY](https://youtu.be/i4y4a8tiwVY)  
 
 ---
 
@@ -100,3 +103,4 @@ src/
 - **Flexbox & Grid** for alignment  
 
 ---
+

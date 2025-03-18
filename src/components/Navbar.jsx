@@ -23,12 +23,18 @@ const Navbar = () => {
                 </div>
 
                 {/* Center Section: Menu (Hidden on Mobile) */}
-                <ul className="hidden md:flex space-x-6 text-gray-700 dark:text-white font-medium">
-                    <li className="cursor-pointer  hover:text-blue-500 transition font-medium">Home</li>
-                    <li className="cursor-pointer  hover:text-blue-500 transition font-medium">About</li>
-                    <li className="cursor-pointer  hover:text-blue-500 transition font-medium">Service</li>
+                <ul className="hidden md:flex space-x-6 text-gray-700  font-medium relative">
+    {["Home", "About", "Service"].map((item, index) => (
+        <li key={index} className="relative cursor-pointer group overflow-hidden hover:text-blue-400">
+            <span className="relative">
+                {item}
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left"></span>
+            </span>
+        </li>
+    ))}
+</ul>
 
-                </ul>
+
 
                 {/* Right Section: Theme Toggle & Mobile Menu */}
                 <div className="flex items-center space-x-4">
@@ -45,7 +51,7 @@ const Navbar = () => {
                     <div className="relative group">
                         <Bell className="h-[24px] w-[24px] cursor-pointer" />
                         <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">
-                           {numberOfNotifications} Notifications
+                            {numberOfNotifications} Notifications
                         </span>
                         {numberOfNotifications > 0 && (
                             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
@@ -54,8 +60,8 @@ const Navbar = () => {
                         )}
                     </div>
                     <div className="relative group flex items-center gap-2">
-                        <img alt="avatar" src="src/assets/avatar.jpeg" className="h-[40px] w-[40px] rounded-full cursor-pointer"/>
-                Hi Sumit
+                        <img alt="avatar" src="src/assets/avatar.jpeg" className="h-[40px] w-[40px] rounded-full cursor-pointer" />
+                        Hi Sumit
                     </div>
 
                     {/* Hamburger Menu (Mobile Only) */}
@@ -83,10 +89,11 @@ const Navbar = () => {
                     <a href="/" className="text-lg font-bold  hover:text-blue-500">Home</a>
                     <a href="/" className="text-lg font-bold  hover:text-blue-500">About</a>
                     <a href='/' className="text-lg font-bold  hover:text-blue-500">Service</a>
+                    
                 </div>
-            </div>
+       </div>
         </nav>
-    );
-};
+    )
+}
 
 export default Navbar;

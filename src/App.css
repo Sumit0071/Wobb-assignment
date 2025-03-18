@@ -8,7 +8,7 @@
   --text-secondary-light: rgb(70, 70, 70);
   --text-secondary-dark: rgb(81, 81, 81);
 
-  --bg-primary-light: white;
+  --bg-primary-light: rgba(255, 255, 255, 0.767);
   --bg-primary-dark: #04152D;
 
   --bg-secondary-light: rgb(212, 212, 212);

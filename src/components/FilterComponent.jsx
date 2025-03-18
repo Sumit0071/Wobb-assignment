@@ -2,7 +2,7 @@ import { Filter } from "lucide-react";
 
 const PayoutOptions = ["Barter", "Fixed Payout", "Flexi Payout", "Product Refund", "Affiliate"];
 const CampaignCategories = ["Any", "Humor & Funny", "Stand up Comedians", "Sketch Comedy", "Budget lifestyle", "Luxury Lifestyle"];
-
+const cashAmount=["under 500 INR","500-1000 INR","1000-1500 INR","1500-2000 INR","2000-2500 INR","more than 2500 INR"]
 const FilterComponent = ({ filters, setFilters }) => {
     const handleChange = (e) => {
         setFilters(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -30,6 +30,7 @@ const FilterComponent = ({ filters, setFilters }) => {
                     <option key={item} value={item}>{item}</option>
                 ))}
             </select>
+          
             
             <div className="flex flex-row space-x-2">
                 <button className="px-4 py-2 bg-red-600 text-white rounded-md" onClick={clearFilters}>

@@ -11,12 +11,6 @@ const SortComponent = ({ categories, onCategoryChange, onFilterIconClick }) => {
 
   return (
     <div className="relative flex gap-4 justify-center my-6">
-      {/* Filter Icon (Handled in Home.jsx) */}
-      <Filter
-        className="cursor-pointer bg-slate-200 hover:text-blue-800"
-        onClick={onFilterIconClick} // Calls the function from Home.jsx
-      />
-
       {/* Category Buttons */}
       {Object.keys(categories).map((category) => (
         <button

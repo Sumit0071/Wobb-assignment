@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Instagram } from "lucide-react";
-
-const CardComponent = ({
+import { BadgePercent } from "lucide-react";
+const CardComponent = ( {
   title,
   description,
   cash,
@@ -12,16 +12,17 @@ const CardComponent = ({
   slotsAvailable,
   buttonText,
   socialLinkText,
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const progress = (hired / slotsAvailable) * 100;
+  vouchersAvailable
+} ) => {
+  const [isHovered, setIsHovered] = useState( false );
+  const progress = ( hired / slotsAvailable ) * 100;
 
   return (
     <div className="w-full max-w-sm mx-auto">
       <div
         className="overflow-hidden shadow-lg border rounded-xl bg-white"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => setIsHovered( true )}
+        onMouseLeave={() => setIsHovered( false )}
       >
         <div className="relative">
           <div className="bg-gradient-to-r from-teal-500 to-green-400 p-4 h-52 flex justify-between items-center rounded-t-xl">
@@ -51,9 +52,8 @@ const CardComponent = ({
           <div className="flex justify-between items-start mb-4">
             <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
             <button
-              className={`px-3 py-1.5 rounded-md text-white text-sm font-medium ${
-                isHovered ? "bg-blue-500" : "bg-red-500"
-              }`}
+              className={`px-3 py-1.5 rounded-md text-white text-sm font-medium ${isHovered ? "bg-blue-500" : "bg-red-500"
+                }`}
             >
               {buttonText}
             </button>
@@ -88,6 +88,10 @@ const CardComponent = ({
             <Instagram className="h-4 w-4" />
             <span>{socialLinkText}</span>
           </button>
+          <span className="bg-slate-300 hover:bg-green-300 w-1/3 h-auto text-[12px] flex items-center justify-center rounded-[6px] gap-1">
+            <BadgePercent />
+            {vouchersAvailable} {vouchersAvailable > 1 ? "vouchers" : "voucher"} Available
+          </span>
         </div>
       </div>
     </div>

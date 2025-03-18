@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from "react";
+import { Filter } from "lucide-react";
 import Navbar from "../components/Navbar";
 import { ThemeContext } from "../Theme";
 import "../App.css";
@@ -9,6 +10,10 @@ import FloatMenu from "../components/FloatMenu";
 import FilterComponent from "../components/FilterComponent";
 import ozivaLogo from "../assets/OZiva_logo_svg.svg";
 import himalaya_logo from "../assets/himalaya_logo.png";
+import gnc_logo from "../assets/gnc_logo.png";
+import gnc_whey from "../assets/gnc_whey.webp";
+import boat_logo from "../assets/boat_logo.jpeg";
+import boat_watch from "../assets/boat_watch.webp";
 const products = [
     {
         title: "Ozivia",
@@ -23,6 +28,7 @@ const products = [
         status: "Applied",
         payout: "Barter",
         campaignCategory: "Budget lifestyle",
+        vouchersAvailable: 2,
     },
     {
         title: "Himalaya",
@@ -36,46 +42,49 @@ const products = [
         buttonText: "Apply Now",
         status: "Hired",
         payout: "Fixed Payout",
+        campaignCategory: "Budget lifestyle",
+        vouchersAvailable: 4,
+    },
+    {
+        title: "Protein Shake",
+        description: "Delicious protein shake for muscle growth and recovery",
+        logo: gnc_logo,
+        heroImage: gnc_whey,
+        cash: "1000 INR",
+        barterWorth: "750 INR",
+        hired: 35,
+        slotsAvailable: 200,
+        buttonText: "Apply Now",
+        status: "Hired",
+        payout: "Flexi Payout",
         campaignCategory: "Luxury Lifestyle",
+        vouchersAvailable: 1,
     },
     {
-        title: "Protein Shake",
-        description: "Delicious protein shake for muscle growth and recovery",
-        logo: "src/assets/shake_logo.svg",
-        heroImage: "src/assets/shake.jpeg",
-        cash: "300 INR",
-        barterWorth: "150 INR",
-        hired: 35,
+        title: " Boat Calorie Tracker",
+        description: "Count your daily calories",
+        logo: boat_logo,
+        heroImage: boat_watch,
+        cash: "1000 INR",
+        barterWorth: "500 INR",
+        hired: 110,
         slotsAvailable: 200,
         buttonText: "Apply Now",
-        status: "Hired",
+        status: "Closed",
         payout: "Flexi Payout",
         campaignCategory: "Budget lifestyle",
-    },
-    {
-        title: "Protein Shake",
-        description: "Delicious protein shake for muscle growth and recovery",
-        logo: "src/assets/shake_logo.svg",
-        heroImage: "src/assets/shake.jpeg",
-        cash: "300 INR",
-        barterWorth: "150 INR",
-        hired: 35,
-        slotsAvailable: 200,
-        buttonText: "Apply Now",
-        status: "Hired",
-        payout: "Flexi Payout",
-        campaignCategory: "Budget lifestyle",
+        vouchersAvailable:3
     },
 ];
+
+
 function Home() {
     const { theme } = useContext( ThemeContext );
     const [loading, setLoading] = useState( true );
     const [filteredCategory, setFilteredCategory] = useState( "All" );
     const [filters, setFilters] = useState( {} );
     const [filteredProducts, setFilteredProducts] = useState( [] );
-    const [showFilters, setShowFilters] = useState( false ); // State for toggling filter component
-
-
+    const [showFilters, setShowFilters] = useState( false );
 
     useEffect( () => {
         setTimeout( () => setLoading( false ), 2000 );
@@ -83,57 +92,60 @@ function Home() {
 
     useEffect( () => {
         let updatedProducts = [...products];
-
-        // Filter by category
         if ( filteredCategory !== "All" ) {
             updatedProducts = updatedProducts.filter( ( p ) => p.status === filteredCategory );
         }
-
-        // Apply additional filters
-        updatedProducts = updatedProducts.filter( ( product ) => {
-            return (
-                ( !filters.payout || product.payout === filters.payout ) &&
-                ( !filters.campaignCategory || product.campaignCategory === filters.campaignCategory )
-            );
-        } );
-
+        updatedProducts = updatedProducts.filter( ( product ) => (
+            ( !filters.payout || product.payout === filters.payout ) &&
+            ( !filters.campaignCategory || product.campaignCategory === filters.campaignCategory )
+        ) );
         setFilteredProducts( updatedProducts );
     }, [filteredCategory, filters] );
 
     return (
         <div className={`App ${theme} min-h-screen bg-gray-100 text-gray-900`}>
             <Navbar />
-            <div className="fixed top-16 left-0 w-full py-3 px-4 z-10">
+
+
+            <div className="fixed top-16 left-1/2 transform -translate-x-1/2 md:left-[calc(50%+8rem)] w-[90%] max-w-xs sm:max-w-sm z-10 p-2 sm:p-4 rounded-md flex flex-wrap justify-center items-center gap-2">
                 <SortComponent
                     categories={{
                         All: products.length,
                         Applied: products.filter( ( p ) => p.status === "Applied" ).length,
                         Hired: products.filter( ( p ) => p.status === "Hired" ).length,
+                        Closed: products.filter( ( p ) => p.status === "Closed" ).length,
                     }}
                     onCategoryChange={setFilteredCategory}
-                    onFilterIconClick={() => setShowFilters( ( prev ) => !prev )} // Toggle filter visibility
                 />
+                <div className="relative">
+                    <Filter
+                        className="cursor-pointer bg-slate-200 hover:text-blue-800 p-2 size-8 rounded  ml-4"
+                        onClick={() => setShowFilters( ( prev ) => !prev )}
+                    />
+
+                    {showFilters && (
+                        <div className="relative top-full mt-2  bg-white shadow-md p-4 rounded-md w-64 z-20">
+                            <FilterComponent filters={filters} setFilters={setFilters} />
+                        </div>
+                    )}
+                </div>
             </div>
 
-            {/* Filter Component */}
-            {showFilters && (
-                <div className="fixed bg-white border border-blue-500 shadow-lg rounded-md p-4 w-64 z-20">
-                    <FilterComponent filters={filters} setFilters={setFilters} />
-                </div>
-            )}
 
-            <div className="pt-32 px-4 md:px-8 lg:px-12">
-                <h2 className="font-semibold text-2xl mt-10">Trending Campaigns</h2>
 
+
+            <div className="pt-28 px-4 md:px-8 lg:px-12 mt-20">
+                <h2 className="font-semibold text-2xl mt-10 ">Trending Campaigns</h2>
                 <div className="container mx-auto py-10 flex flex-wrap justify-center gap-8">
                     {loading
-                        ? [1, 2].map( ( _, i ) => <SkeletonCard key={i} /> )
+                        ? filteredProducts.map( ( _, i ) => <SkeletonCard key={i} /> )
                         : filteredProducts.map( ( product, i ) => <CardComponent key={i} {...product} /> )}
                 </div>
             </div>
+
             <FloatMenu />
         </div>
     );
 }
-
 export default Home;
+
